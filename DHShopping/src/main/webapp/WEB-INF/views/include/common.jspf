@@ -1,0 +1,104 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="csrf-token"
+	content="MTU1MTczODgxNjEzNTU1NDc4NDQ2MDk4NDc2Njg0NzMzMDU1NzcyMDkz" />
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple">
+<meta property="og:url" content="${path}/">
+<meta property="og:description" content="Simple">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple">
+<meta name="twitter:description" content="Simple">
+
+
+<link type="text/css" rel="stylesheet" href="${path}/resources/css/gd_reset.css?ts=1508989263" />
+<link type="text/css" rel="stylesheet" href="${path}/resources/js/jquery/chosen/chosen.css?ts=1508989277" />
+<link type="text/css" rel="stylesheet" href="${path}/resources/css/gd_layout.css?ts=1508989263" />
+<link type="text/css" rel="stylesheet" href="${path}/resources/css/gd_common.css?ts=1524763565" />
+<link type="text/css" rel="stylesheet" href="${path}/resources/css/gd_item-display.css?ts=1545961259" />
+<link type="text/css" rel="stylesheet" href="${path}/resources/css/gd_goods-view.css?ts=1550655484" />
+<link type="text/css" rel="stylesheet" href="${path}/resources/css/gd_contents.css?ts=1548813580" />
+<link type="text/css" rel="stylesheet" href="${path}/resources/css/gd_share.css?ts=1539758042" />
+<link type="text/css" rel="stylesheet" href="${path}/resources/css/gd_custom.css?ts=1525066837" />
+
+<!--[if lte ie 8]><link type="text/css" rel="stylesheet" href="/data/skin/front/8design/css/gd_old-ie.css?ts=1508989263" /><![endif]-->
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+<script type="text/javascript">
+	var json_locale_data = {
+		"domain" : "messages",
+		"locale_data" : {
+			"messages" : {
+				"" : {
+					"lang" : "ATF",
+					"plural-forms" : "nplurals=1; plural=0"
+				}
+			}
+		}
+	}
+</script>
+<script type="text/javascript" src="${path}/resources/js/gd_gettext.js?ts=1508989264"></script>
+<script type="text/javascript" src="${path}/resources/js/jquery/jquery.min.js?ts=1508989272"></script>
+<script type="text/javascript" src="${path}/resources/js/underscore/underscore-min.js?ts=1508989273"></script>
+<script type="text/javascript" src="${path}/resources/js/jquery/validation/jquery.validate.min.js?ts=1508989279"></script>
+<script type="text/javascript" src="${path}/resources/js/jquery/validation/additional-methods.min.js?ts=1508989278"></script>
+<script type="text/javascript" src="${path}/resources/js/numeral/numeral.min.js?ts=1508989273"></script>
+<script type="text/javascript" src="${path}/resources/js/global/accounting.min.js?ts=1508989271"></script>
+<script type="text/javascript" src="${path}/resources/js/global/money.min.js?ts=1508989271"></script>
+<script type="text/javascript" src="${path}/resources/js/jquery/chosen/chosen.jquery.min.js?ts=1508989277"></script>
+<script type="text/javascript" src="${path}/resources/js/jquery/placeholder/placeholders.jquery.min.js?ts=1508989278"></script>
+<!-- [if gt IE 8] -->
+<!-- <script type="text/javascript" src="js/copyclipboard/clipboard.min.js?ts=1508989271"></script> -->
+<!-- [endif] -->
+<script type="text/javascript" src="${path}/resources/js/jquery/vticker/jquery.vticker.js?ts=1508989279"></script>
+<script type="text/javascript" src="${path}/resources/js/gd_ui.js?ts=1524617525"></script>
+<script type="text/javascript">
+	// 고도몰5 통화정책
+	var gdCurrencyDecimal = 0;
+	var gdCurrencyDecimalFormat = '0';
+	var gdCurrencyCode = 'KRW';
+	var gdCurrencyAddDecimal = 0;
+	var gdCurrencyAddDecimalFormat = '';
+	var gdCurrencyAddCode = '';
+	var gdLocale = 'ko';
+	var gdCurrencySymbol = '';
+	var gdCurrencyString = '원';
+
+	// 환율변환 정책
+	fx.base = "KRW";
+	fx.settings = {
+		from : "KRW",
+		to : gdCurrencyCode
+	};
+	fx.rates = {
+		"KRW" : 1,
+		"USD" : 0,
+		"CNY" : 0,
+		"JPY" : 0,
+		"EUR" : 0,
+	}
+</script>
+<script type="text/javascript" src="${path}/resources/js/gd_common.js?ts=1545961259"></script>
+
+<!-- Add script : start -->
+<script type="text/javascript" src="${path}/resources/js/jquery/jquery-cookie/jquery.cookie.js"></script>
+<script type="text/javascript" src="${path}/resources/js/gd_popup.js"></script>
+<!-- Add script : end -->
+
+
+

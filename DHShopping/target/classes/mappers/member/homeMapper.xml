@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="home">
+
+	<select id="getCategory" resultType="CategoryVO">
+		SELECT *
+		FROM product_category
+		WHERE visible = 1
+		ORDER BY seq ASC
+	</select>
+	
+	<select id="selectShowMainProducts" resultType="ProductVO">
+		SELECT p.productNo, p.category_code, p.name, p.price, p.comment, p.thumbnail_url 
+		FROM product AS p
+		JOIN product_show_main m
+		ON p.productNo = m.productNo
+		WHERE p.visible = 1 AND m.visible = 1
+		LIMIT 0, 20
+	</select>
+	
+</mapper>

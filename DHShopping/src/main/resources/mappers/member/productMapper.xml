@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+	<select id="selectProductList" resultType="ProductVO">
+		<![CDATA[
+			SELECT *
+			FROM product
+			WHERE productNo > 0  
+		]]>
+		<include refid="category" />
+		<include refid="search" />
+		<include refid="sort" />
+		<![CDATA[	
+			LIMIT #{pageStart}, #{pageNum}
+		]]>
+	</select>
+
+	<select id="countProduct" resultType="int">
+		<![CDATA[
+			SELECT COUNT(productNo)
+			FROM product
+			WHERE category_code = #{cateCd} AND productNo > 0
+		]]>
+
+	</select>
+	
+	<select id="countProductForSearch" parameterType="string" resultType="int">
+		<![CDATA[
+			SELECT COUNT(productNo)
+			FROM product
+			WHERE productNo > 0 AND name LIKE CONCAT('%', #{keyword}, '%')		
+		]]>
+	</select>
+	
+	<select id="parentCategoryCountProduct" resultType="hashmap">
+		SELECT c.code, c.title, COUNT(p.productNo) as count
+		FROM product AS p
+		JOIN product_category AS c
+		ON c.code = p.category_code
+		WHERE c.parent = #{parent}
+		GROUP BY c.title;
+	</select>
+
+	<select id="selectParentCategoryProduct" resultType="ProductVO">
+		SELECT p.productNo, p.category_code, p.name, p.price, p.comment, p.thumbnail_url
+		FROM product AS p
+		JOIN product_category AS c
+		ON c.code = p.category_code
+		WHERE c.parent = #{cateCd}
+		<include refid="sort" />
+		<![CDATA[	
+			LIMIT #{pageStart}, #{pageNum}
+		]]>
+	</select>
+
+	<!-- 1: 판매인기순, 2: 낮은가격 , 3: 높은가격, 4: 상품명, 5: 등록일순 -->
+	<sql id="sort">
+		<if test='sort != null'>
+			<choose>
+				<when test='sort == "1"'>
+					ORDER BY countSales DESC
+				</when>
+				<when test='sort == "2"'>
+					ORDER BY price+0 ASC
+				</when>
+				<when test='sort == "3"'>
+					ORDER BY price+0 DESC
+				</when>
+				<when test='sort == "4"'>
+					ORDER BY binary(name) ASC
+				</when>
+				<when test='sort == "5"'>
+					ORDER BY writeDate DESC
+				</when>
+				<otherwise>
+					ORDER BY writeDate DESC
+				</otherwise>
+			</choose>
+		</if>
+		<if test='sort == null'>
+			ORDER BY writeDate DESC 
+		</if>
+	</sql>
+	
+	<sql id="category">
+		<if test="cateCd != null">
+			AND category_code = #{cateCd}
+		</if>
+	</sql>
+	
+	<sql id="search">
+		<if test="keyword != null">
+			AND name LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</sql>
+	
+</mapper>

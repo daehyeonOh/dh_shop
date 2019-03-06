@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	
+	<insert id="insertMember">
+		<![CDATA[
+			INSERT INTO member(id, password, name, email)
+			VALUES(#{id}, #{password}, #{name}, #{email})
+		]]>
+	</insert>
+	
+	<insert id="insertMemberRole">
+		<![CDATA[
+			INSERT INTO member_authority(member_id)
+			VALUES(#{id})
+		]]>
+	</insert>
+	
+	<select id="selectMember" resultType="MemberVO">
+		<![CDATA[
+			SELECT *
+			FROM member
+			WHERE id = #{id}
+		]]>
+	</select>
+	
+	<select id="selectDisabledType" resultType="int">
+		<![CDATA[
+			SELECT disabledType
+			FROM member_disabled
+			WHERE member_id = #{id}
+		]]>
+	</select>
+	
+	<update id="updateMemberSession">
+		<![CDATA[
+			UPDATE member
+			SET session_key = #{session_key}, session_limit = #{session_limit}
+			WHERE id = #{id}
+		]]>
+	</update>
+	
+	<select id="checkSession" resultType="MemberVO">
+		<![CDATA[
+			SELECT *
+			FROM member
+			WHERE session_key = #{sessionKey}
+		]]>
+	</select>
+	
+	<select id="checkId" resultType="int">
+		SELECT COUNT(id)
+		FROM member
+		WHERE id = #{id}
+	</select>
+	
+	<insert id="insertLoginLog">
+		INSERT INTO member_log_login(member_id, ip)
+		VALUES(#{id}, #{ip})
+	</insert>
+	
+	<update id="updateMember">
+		<![CDATA[
+			UPDATE member
+			SET password = #{password}, name = #{name}, email = #{email}
+			WHERE id = #{id}
+		]]>
+	</update>
+	
+	<select id="selectMemberRole" resultType="String">
+		<![CDATA[
+			SELECT role
+			FROM member_authority
+			WHERE member_id = #{id}
+		]]>
+	</select>
+	
+	
+</mapper>
